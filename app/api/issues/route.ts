@@ -24,6 +24,7 @@ export async function GET() {
 
     if (!business) {
       business = await prisma.business.findFirst({
+        orderBy: { updatedAt: "desc" },
         include: { feedbacks: { orderBy: { createdAt: "desc" }, take: 300 } },
       });
     }

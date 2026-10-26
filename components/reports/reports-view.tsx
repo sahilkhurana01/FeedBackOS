@@ -34,22 +34,30 @@ export function ReportsView() {
   };
 
   useEffect(() => {
-    // Get business name from localStorage/API
-    try {
-      const raw = localStorage.getItem("feedbackos_business");
-      if (raw) {
-        const p = JSON.parse(raw);
-        if (p.name) setBizName(p.name);
-      }
-    } catch {}
+    const loadBiz = () => {
+      try {
+        const raw = localStorage.getItem("feedbackos_business");
+        if (raw) {
+          const p = JSON.parse(raw);
+          if (p.name) setBizName(p.name);
+        }
+      } catch {}
 
-    fetch("/api/business/onboarding")
-      .then((r) => r.json())
-      .then((data) => { if (data?.business?.name) setBizName(data.business.name); })
-      .catch(() => {});
+      fetch("/api/business/onboarding")
+        .then((r) => r.json())
+        .then((data) => { if (data?.business?.name) setBizName(data.business.name); })
+        .catch(() => {});
+    };
 
-    // Load existing reports from DB
+    loadBiz();
     fetchReports();
+
+    const onUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail?.name) setBizName(customEvent.detail.name);
+    };
+    window.addEventListener("feedbackos_business_updated", onUpdate);
+    return () => window.removeEventListener("feedbackos_business_updated", onUpdate);
   }, []);
 
   const fetchReports = () => {

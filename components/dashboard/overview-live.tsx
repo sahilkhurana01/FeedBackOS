@@ -28,22 +28,29 @@ export function OverviewLive() {
   const [liveIssues, setLiveIssues] = useState<LiveIssue[]>([]);
 
   useEffect(() => {
-    fetch("/api/dashboard/overview")
-      .then((res) => res.json())
-      .then((resData) => {
-        if (resData.success) setData(resData);
-      })
-      .catch(() => {});
+    const loadOverview = () => {
+      fetch("/api/dashboard/overview")
+        .then((res) => res.json())
+        .then((resData) => {
+          if (resData.success) setData(resData);
+        })
+        .catch(() => {});
 
-    // Fetch live critical issues for the mini-list
-    fetch("/api/issues")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.issues && d.issues.length > 0) {
-          setLiveIssues(d.issues.slice(0, 4));
-        }
-      })
-      .catch(() => {});
+      fetch("/api/issues")
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.issues && d.issues.length > 0) {
+            setLiveIssues(d.issues.slice(0, 4));
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadOverview();
+
+    const onUpdate = () => loadOverview();
+    window.addEventListener("feedbackos_business_updated", onUpdate);
+    return () => window.removeEventListener("feedbackos_business_updated", onUpdate);
   }, []);
 
   const businessName = data?.businessName || "Your Business";

@@ -17,7 +17,7 @@ export async function GET() {
       business = user?.businesses?.[0] ?? null;
     }
     if (!business) {
-      business = await prisma.business.findFirst();
+      business = await prisma.business.findFirst({ orderBy: { updatedAt: "desc" } });
     }
 
     if (!business) {

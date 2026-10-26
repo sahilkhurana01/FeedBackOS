@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     }
 
     if (!business) {
-      business = await prisma.business.findFirst();
+      business = await prisma.business.findFirst({ orderBy: { updatedAt: "desc" } });
     }
 
     // If no business exists at all in DB, create default user & business

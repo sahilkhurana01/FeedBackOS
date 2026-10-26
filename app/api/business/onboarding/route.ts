@@ -39,21 +39,38 @@ export async function POST(request: Request) {
         },
       });
 
-      // Create Business record with ZERO seeded reviews (pure clean slate)
-      businessRecord = await prisma.business.create({
-        data: {
-          name: businessName,
-          industry: industry,
-          userId: user.id,
-        },
+      // Check if user already has a business or if a seed/default business exists
+      const existingBiz = await prisma.business.findFirst({
+        where: { OR: [{ userId: user.id }, { id: "bus_seed_heritage_bistro" }] },
+        orderBy: { updatedAt: "desc" },
       });
+
+      if (existingBiz) {
+        businessRecord = await prisma.business.update({
+          where: { id: existingBiz.id },
+          data: {
+            name: businessName,
+            industry: industry,
+            userId: user.id,
+            updatedAt: new Date(),
+          },
+        });
+      } else {
+        businessRecord = await prisma.business.create({
+          data: {
+            name: businessName,
+            industry: industry,
+            userId: user.id,
+          },
+        });
+      }
     } catch (dbErr) {
       console.error("Database Onboarding Error:", dbErr);
     }
 
     return NextResponse.json({
       success: true,
-      message: `Welcome to FeedbackOS, ${businessName}! Workspace created. Upload your first CSV batch to begin.`,
+      message: `Welcome to FeedbackOS, ${businessName}! Workspace configured successfully.`,
       business: {
         id: businessRecord?.id || "bus_onboarded",
         name: businessName,
@@ -83,7 +100,7 @@ export async function GET() {
     if (clerkId) {
       const user = await prisma.user.findUnique({
         where: { clerkUserId: clerkId },
-        include: { businesses: { include: { user: true } } },
+        include: { businesses: { orderBy: { updatedAt: "desc" }, include: { user: true } } },
       });
 
       if (user && user.businesses.length > 0) {
@@ -94,13 +111,14 @@ export async function GET() {
       }
     }
 
-    // Check if any business exists in DB
-    const firstBusiness = await prisma.business.findFirst({
+    // Check if any business exists in DB (most recently updated)
+    const activeBusiness = await prisma.business.findFirst({
+      orderBy: { updatedAt: "desc" },
       include: { user: true },
     });
     return NextResponse.json({
-      hasBusiness: !!firstBusiness,
-      business: firstBusiness || null,
+      hasBusiness: !!activeBusiness,
+      business: activeBusiness || null,
     });
   } catch {
     return NextResponse.json({ hasBusiness: false, business: null });

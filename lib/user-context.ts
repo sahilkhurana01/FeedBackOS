@@ -30,7 +30,7 @@ export async function getActiveUserBusiness(): Promise<ActiveUserBusiness> {
   try {
     let dbUser = await prisma.user.findUnique({
       where: { clerkUserId: clerkId },
-      include: { businesses: true },
+      include: { businesses: { orderBy: { updatedAt: "desc" } } },
     });
 
     if (dbUser && dbUser.businesses.length > 0) {
@@ -45,8 +45,9 @@ export async function getActiveUserBusiness(): Promise<ActiveUserBusiness> {
       };
     }
 
-    // Try finding any business in the database
+    // Try finding the most recently updated business in the database
     const anyBus = await prisma.business.findFirst({
+      orderBy: { updatedAt: "desc" },
       include: { user: true },
     });
 

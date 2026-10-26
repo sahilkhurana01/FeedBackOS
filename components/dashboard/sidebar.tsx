@@ -59,6 +59,16 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         }
       })
       .catch(() => {});
+
+    const onUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail?.name) {
+        setBizName(customEvent.detail.name);
+      }
+    };
+
+    window.addEventListener("feedbackos_business_updated", onUpdate);
+    return () => window.removeEventListener("feedbackos_business_updated", onUpdate);
   }, []);
 
   return (

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const business = await prisma.business.findFirst({
+      orderBy: { updatedAt: "desc" },
       include: {
         feedbacks: {
           orderBy: { createdAt: "desc" },

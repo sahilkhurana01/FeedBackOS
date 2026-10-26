@@ -18,18 +18,22 @@ const isClerkConfigured =
 
 function ClerkUserSectionMounted() {
   const { user, isLoaded } = useUser();
-  const [bizName, setBizName] = useState<string>("The Heritage Bistro & Kitchen");
+  const [bizName, setBizName] = useState<string>("Your Business");
   const [adminName, setAdminName] = useState<string>("Sahil Khurana");
 
   useEffect(() => {
-    const raw = localStorage.getItem("feedbackos_business");
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed.name) setBizName(parsed.name);
-        if (parsed.user?.name) setAdminName(parsed.user.name);
-      } catch {}
-    }
+    const loadData = () => {
+      const raw = localStorage.getItem("feedbackos_business");
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed.name) setBizName(parsed.name);
+          if (parsed.user?.name) setAdminName(parsed.user.name);
+        } catch {}
+      }
+    };
+    loadData();
+
     fetch("/api/business/onboarding")
       .then((r) => r.json())
       .then((d) => {
@@ -37,6 +41,15 @@ function ClerkUserSectionMounted() {
         if (d?.business?.user?.name) setAdminName(d.business.user.name);
       })
       .catch(() => {});
+
+    const onUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail?.name) setBizName(customEvent.detail.name);
+      if (customEvent.detail?.user?.name) setAdminName(customEvent.detail.user.name);
+    };
+
+    window.addEventListener("feedbackos_business_updated", onUpdate);
+    return () => window.removeEventListener("feedbackos_business_updated", onUpdate);
   }, []);
 
   const userName = isLoaded && user ? user.fullName || user.username || adminName : adminName;
@@ -72,18 +85,22 @@ function ClerkUserSection() {
 }
 
 function DemoUserSection() {
-  const [bizName, setBizName] = useState<string>("The Heritage Bistro & Kitchen");
+  const [bizName, setBizName] = useState<string>("Your Business");
   const [adminName, setAdminName] = useState<string>("Sahil Khurana");
 
   useEffect(() => {
-    const raw = localStorage.getItem("feedbackos_business");
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed.name) setBizName(parsed.name);
-        if (parsed.user?.name) setAdminName(parsed.user.name);
-      } catch {}
-    }
+    const loadData = () => {
+      const raw = localStorage.getItem("feedbackos_business");
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed.name) setBizName(parsed.name);
+          if (parsed.user?.name) setAdminName(parsed.user.name);
+        } catch {}
+      }
+    };
+    loadData();
+
     fetch("/api/business/onboarding")
       .then((r) => r.json())
       .then((d) => {
@@ -91,6 +108,15 @@ function DemoUserSection() {
         if (d?.business?.user?.name) setAdminName(d.business.user.name);
       })
       .catch(() => {});
+
+    const onUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail?.name) setBizName(customEvent.detail.name);
+      if (customEvent.detail?.user?.name) setAdminName(customEvent.detail.user.name);
+    };
+
+    window.addEventListener("feedbackos_business_updated", onUpdate);
+    return () => window.removeEventListener("feedbackos_business_updated", onUpdate);
   }, []);
 
   return (
