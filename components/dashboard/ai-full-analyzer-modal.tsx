@@ -345,34 +345,42 @@ export function AIFullAnalyzerModal({ isOpen, onClose, userEmail }: AIFullAnalyz
               </p>
             </div>
 
-            {/* Email Report Section */}
+            {/* Email Report Section (Powered by Formspree) */}
             <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 space-y-3">
-              <h4 className="text-[13.5px] font-semibold text-foreground flex items-center gap-2">
-                <Mail className="size-4 text-primary" />
-                Email Executive Report & Growth Roadmap to Your Inbox
-              </h4>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <h4 className="text-[13.5px] font-semibold text-foreground flex items-center gap-2">
+                  <Mail className="size-4 text-primary" />
+                  Email Executive Report & Growth Roadmap Directly to Your Inbox
+                </h4>
+                <span className="text-[11px] font-medium text-primary/80 bg-primary/10 px-2.5 py-0.5 rounded-full w-fit">
+                  ⚡ Formspree Email Delivery
+                </span>
+              </div>
+              <p className="text-[12px] text-muted-foreground">
+                Sends the full executive diagnosis, Core Corners breakdown, and 30-day action plan straight to your email.
+              </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   value={recipientEmail}
                   onChange={(e) => setRecipientEmail(e.target.value)}
-                  placeholder="Enter your Gmail / Email ID..."
+                  placeholder="Enter your Gmail / Email ID (e.g. khuranasahil099@gmail.com)..."
                   className="h-10 flex-1 rounded-xl bg-background px-3.5 text-[13px] outline-none border border-black/10 dark:border-white/15"
                 />
                 <Button
                   onClick={handleSendEmail}
                   disabled={isSendingEmail}
-                  className="h-10 px-4 text-[13px] gap-2 shrink-0"
+                  className="h-10 px-4 text-[13px] gap-2 shrink-0 font-medium"
                 >
                   {isSendingEmail ? (
                     <>
                       <Loader2 className="size-4 animate-spin" />
-                      Mailing Report...
+                      Sending via Formspree...
                     </>
                   ) : (
                     <>
                       <Mail className="size-4" />
-                      Email Report
+                      Send to My Email
                     </>
                   )}
                 </Button>

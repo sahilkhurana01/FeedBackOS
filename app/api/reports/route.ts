@@ -39,6 +39,18 @@ export async function GET() {
         }
       } catch {}
 
+      // Compute normalized 0-100 Customer Sentiment Index
+      let sentimentScore = 50;
+      if (typeof metrics.sentimentScore === "number" && metrics.sentimentScore > 0) {
+        sentimentScore = metrics.sentimentScore;
+      } else if (typeof metrics.netSentimentScore === "number") {
+        // Net sentiment (-100 to +100) maps to 0-100: (0 net sentiment = 50/100 balanced baseline)
+        sentimentScore = Math.max(5, Math.min(99, Math.round(50 + (metrics.netSentimentScore / 2))));
+      } else if (metrics.totalFeedbackCount && metrics.badCount !== undefined) {
+        const pos = metrics.excellentCount || (metrics.totalFeedbackCount - metrics.badCount);
+        sentimentScore = Math.round((pos / metrics.totalFeedbackCount) * 100);
+      }
+
       return {
         id: r.id,
         title: r.title,
@@ -46,7 +58,7 @@ export async function GET() {
         type: "Monthly Summary",
         createdAt: new Date(r.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
         summary: r.summary,
-        sentimentScore: metrics.netSentimentScore ?? 0,
+        sentimentScore,
         totalReviewsAnalyzed: metrics.totalFeedbackCount ?? metrics.totalReviews ?? 0,
         topPositiveTopic: metrics.positiveDriver?.title || metrics.topPositiveTopic || "Product Quality",
         topNegativeTopic: metrics.frictionCluster?.title || metrics.topNegativeTopic || "Service Speed",

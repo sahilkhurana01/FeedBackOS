@@ -310,7 +310,7 @@ async function seed() {
       metrics: JSON.stringify({
         totalFeedbackCount: totalCount,
         averageRating: Number(avgRating),
-        netSentimentScore: Math.round(((posCount - badCount) / totalCount) * 100),
+        netSentimentScore: Math.round(50 + (((posCount - badCount) / totalCount) * 50)),
         topPositiveTopic: "Food & Product Quality (Pasta & Risotto)",
         topNegativeTopic: "Customer Support & Wait Times",
         badCount,

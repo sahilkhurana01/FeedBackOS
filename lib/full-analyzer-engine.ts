@@ -77,9 +77,12 @@ export async function runFullAIAnalysis(businessId: string, businessName = "Your
     ? Number((feedbacks.reduce((acc, f) => acc + f.rating, 0) / totalReviews).toFixed(1))
     : 4.2;
 
-  const netSentimentScore = totalReviews > 0
-    ? Math.round(((excellentCount + (goodCount * 0.5) - badCount) / totalReviews) * 100)
-    : 65;
+  // Convert Net Sentiment (-100 to +100) to a standard 0-100 Customer Sentiment Index
+  // (50 is neutral/balanced baseline when positive equals negative)
+  const rawNetScore = totalReviews > 0
+    ? ((excellentCount + (goodCount * 0.5) - badCount) / totalReviews) * 100
+    : 20;
+  const netSentimentScore = Math.max(5, Math.min(99, Math.round(50 + (rawNetScore / 2))));
 
   const isBadOverall = totalReviews > 0 && (badCount / totalReviews >= 0.35 || avgRating < 3.8);
 

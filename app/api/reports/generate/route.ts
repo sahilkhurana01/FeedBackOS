@@ -39,14 +39,18 @@ export async function POST(request: Request) {
 
     const positiveFeedbacks = feedbacks.filter((f) => f.sentiment === "POSITIVE" || f.rating >= 4);
     const negativeFeedbacks = feedbacks.filter((f) => f.sentiment === "NEGATIVE" || f.rating <= 2);
+    const neutralFeedbacks = feedbacks.filter((f) => f.sentiment === "NEUTRAL" || f.rating === 3);
+
+    const posCount = positiveFeedbacks.length;
+    const negCount = negativeFeedbacks.length;
 
     const avgRating = totalCount > 0
       ? Number((feedbacks.reduce((a, f) => a + f.rating, 0) / totalCount).toFixed(1))
       : 4.2;
 
-    const netScore = totalCount > 0
-      ? Math.round(((positiveFeedbacks.length - negativeFeedbacks.length) / totalCount) * 100)
-      : 60;
+    // Standard 0-100 Customer Sentiment Index (50 is balanced baseline)
+    const rawNet = totalCount > 0 ? ((posCount - negCount) / totalCount) * 100 : 0;
+    const netScore = Math.max(5, Math.min(99, Math.round(50 + (rawNet / 2))));
 
     // Detect real topic drivers
     const topics = computeTopicClusters(
