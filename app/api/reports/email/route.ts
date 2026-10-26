@@ -94,7 +94,8 @@ Log in to your FeedbackOS workspace to interact with your AI Growth Coach.
     const formId =
       customFormspreeId ||
       process.env.FORMSPREE_FORM_ID ||
-      (process.env.FORMSPREE_ENDPOINT ? process.env.FORMSPREE_ENDPOINT.replace("https://formspree.io/f/", "") : null);
+      (process.env.FORMSPREE_ENDPOINT ? process.env.FORMSPREE_ENDPOINT.replace("https://formspree.io/f/", "") : null) ||
+      "xjyyyrew";
 
     const formspreeEndpoint = formId
       ? formId.startsWith("http")

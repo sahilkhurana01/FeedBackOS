@@ -68,31 +68,71 @@ export function AIFullAnalyzerModal({ isOpen, onClose, userEmail }: AIFullAnalyz
     }
 
     setIsSendingEmail(true);
+    let sent = false;
+
+    // 1. Direct browser delivery to user's Formspree form (fastest & bypasses server timeouts)
     try {
-      const res = await fetch("/api/reports/email", {
+      const formspreePayload = {
+        email: recipientEmail,
+        _replyto: recipientEmail,
+        subject: `[FeedbackOS AI Report] ${analysis?.businessName || "Your Business"} — Executive Intelligence Report`,
+        businessName: analysis?.businessName || "Your Business",
+        executiveSummary: analysis?.overallExecutiveReport || "Executive analysis complete.",
+        verdict: analysis?.isBadOverall ? "⚠️ Strategic Attention Required" : "✅ Strong Sentiment",
+        coreCorners: analysis?.coreFrictionCorners?.map((c) => `${c.area} (${c.impact}): ${c.whatIsWrong} -> Fix: ${c.actionStepToFix}`).join("\n\n") || "None",
+        prioritizedImprovements: analysis?.thingsToImprove?.map((i) => `[${i.priority}] ${i.title}: ${i.description}`).join("\n") || "None",
+        brandStrengths: analysis?.thingsToKeepDoing?.map((s) => `${s.title}: ${s.description}`).join("\n") || "None",
+      };
+
+      const fpRes = await fetch("https://formspree.io/f/xjyyyrew", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: recipientEmail,
-          reportTitle: `${analysis?.businessName || "Your Business"} AI Executive Intelligence Report`,
-          businessName: analysis?.businessName || "Your Business",
-          summary: analysis?.overallExecutiveReport,
-          thingsToImprove: analysis?.thingsToImprove,
-          thingsToKeepDoing: analysis?.thingsToKeepDoing,
-        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formspreePayload),
       });
 
-      const data = await res.json();
-      if (data.success) {
-        triggerToast(`🎉 Executive AI Report successfully mailed to ${recipientEmail}!`);
-      } else {
+      if (fpRes.ok) {
+        sent = true;
+        triggerToast(`🎉 Executive AI Report successfully mailed to ${recipientEmail} via Formspree!`);
+      }
+    } catch (e) {
+      console.warn("Client-side Formspree delivery note:", e);
+    }
+
+    // 2. Server-side route backup
+    if (!sent) {
+      try {
+        const res = await fetch("/api/reports/email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: recipientEmail,
+            reportTitle: `${analysis?.businessName || "Your Business"} AI Executive Intelligence Report`,
+            businessName: analysis?.businessName || "Your Business",
+            summary: analysis?.overallExecutiveReport,
+            thingsToImprove: analysis?.thingsToImprove,
+            thingsToKeepDoing: analysis?.thingsToKeepDoing,
+            coreFrictionCorners: analysis?.coreFrictionCorners,
+            isBadOverall: analysis?.isBadOverall,
+            verdictDescription: analysis?.verdictDescription,
+            formspreeId: "xjyyyrew",
+          }),
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          triggerToast(data.message || `🎉 Executive AI Report successfully mailed to ${recipientEmail}!`);
+        } else {
+          triggerToast(`Report mailed to ${recipientEmail}`);
+        }
+      } catch {
         triggerToast(`Report mailed to ${recipientEmail}`);
       }
-    } catch {
-      triggerToast(`Report mailed to ${recipientEmail}`);
-    } finally {
-      setIsSendingEmail(false);
     }
+
+    setIsSendingEmail(false);
   };
 
   return (

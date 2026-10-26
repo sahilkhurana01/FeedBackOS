@@ -25,3 +25,5 @@ services:
         sync: false
       - key: GROQ_API_KEY
         sync: false
+      - key: FORMSPREE_FORM_ID
+        value: xjyyyrew
