@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { SignUp } from "@clerk/nextjs";
+import { Logo } from "@/components/shared/logo";
+
+export const metadata: Metadata = {
+  title: "Sign up",
+};
+
+export default function SignUpPage() {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-muted/30 px-4 py-12">
+      <div className="mb-8">
+        <Logo />
+      </div>
+      <SignUp
+        appearance={{
+          elements: {
+            rootBox: "mx-auto shadow-xl rounded-2xl",
+            card: "border border-border bg-card shadow-none rounded-2xl",
+          },
+        }}
+      />
+    </div>
+  );
+}

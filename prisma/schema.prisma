@@ -1,0 +1,130 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id          String     @id @default(cuid())
+  clerkUserId String     @unique
+  email       String     @unique
+  name        String?
+  role        String     @default("OWNER")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  businesses  Business[]
+}
+
+model Business {
+  id              String              @id @default(cuid())
+  name            String
+  industry        String?
+  userId          String
+  user            User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  feedbacks       Feedback[]
+  topics          Topic[]
+  issues          Issue[]
+  recommendations Recommendation[]
+  conversations   CoachConversation[]
+  reports         Report[]
+}
+
+model Feedback {
+  id             String    @id @default(cuid())
+  businessId     String
+  business       Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  authorName     String?
+  source         String    @default("Direct")
+  rating         Int
+  content        String
+  sentiment      String    @default("NEUTRAL")
+  sentimentScore Float     @default(0.0)
+  confidence     Float     @default(0.0)
+  priority       String    @default("MEDIUM")
+  topics         String?
+  createdAt      DateTime  @default(now())
+}
+
+model Topic {
+  id           String   @id @default(cuid())
+  businessId   String
+  business     Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  name         String
+  category     String?
+  mentionCount Int      @default(0)
+  positivePct  Float    @default(0.0)
+  negativePct  Float    @default(0.0)
+  neutralPct   Float    @default(0.0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([businessId, name])
+}
+
+model Issue {
+  id              String           @id @default(cuid())
+  businessId      String
+  business        Business         @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  title           String
+  description     String?
+  priority        String           @default("HIGH")
+  status          String           @default("PENDING")
+  mentionCount    Int              @default(0)
+  trend           String           @default("Negative")
+  exampleFeedback String?
+  suggestedAction String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  recommendations Recommendation[]
+}
+
+model Recommendation {
+  id           String      @id @default(cuid())
+  businessId   String
+  business     Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  issueId      String?
+  issue        Issue?      @relation(fields: [issueId], references: [id], onDelete: SetNull)
+  category     String      @default("IMMEDIATE")
+  title        String
+  whyItMatters String
+  actionStep   String
+  priority     String      @default("HIGH")
+  status       String      @default("PENDING")
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model CoachConversation {
+  id         String         @id @default(cuid())
+  businessId String
+  business   Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  title      String         @default("New Conversation")
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  messages   CoachMessage[]
+}
+
+model CoachMessage {
+  id             String            @id @default(cuid())
+  conversationId String
+  conversation   CoachConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String
+  content        String
+  createdAt      DateTime          @default(now())
+}
+
+model Report {
+  id         String   @id @default(cuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  title      String
+  period     String
+  summary    String
+  metrics    String?
+  createdAt  DateTime @default(now())
+}

@@ -1,0 +1,81 @@
+﻿id,reviewer_name,rating,date,review_text,sentiment,category
+1,Alice Thompson,5,2024-01-05,"Absolutely amazing experience! The food was fresh, flavorful, and beautifully presented. Our server Emily was attentive and knowledgeable. Will definitely be coming back!",positive,food_quality
+2,Mark Rivera,5,2024-01-08,"Best pasta I've ever had in my life. The ambiance was cozy and romantic. Perfect for date night. Highly recommend the truffle risotto!",positive,food_quality
+3,Sophie Lane,4,2024-01-10,"Wonderful evening overall. The chef's special was outstanding and the wine pairing suggestions were spot on. Just a tiny wait but worth every minute.",positive,overall_experience
+4,James Patel,5,2024-01-12,"Outstanding service from start to finish. The staff remembered it was our anniversary and surprised us with a complimentary dessert. Truly touched.",positive,customer_service
+5,Natalie Chen,4,2024-01-15,"Great food and a lively atmosphere. The grilled salmon was cooked to perfection. Portions are generous and prices are reasonable.",positive,food_quality
+6,Ethan Brooks,5,2024-01-17,"Phenomenal! Every dish we ordered was absolutely delicious. The garlic bread was crispy, the steak was juicy. Five stars, no question.",positive,food_quality
+7,Olivia Hart,5,2024-01-20,"Came here for my birthday and it was perfect. The staff sang to me and the lava cake was divine. An unforgettable night!",positive,overall_experience
+8,Liam Foster,4,2024-01-22,"Solid experience. The menu has great variety and the kitchen clearly takes pride in what they serve. The soup was rich and hearty.",positive,food_quality
+9,Ava Simmons,5,2024-01-25,"I've been to many restaurants but this one stands out. The flavors were so complex and well balanced. The ambiance was elegant without being stuffy.",positive,ambiance
+10,Noah Williams,5,2024-01-28,"The service was impeccable. Our waiter Jacob went above and beyond to make sure we had everything we needed. The food matched the service perfectly.",positive,customer_service
+11,Emma Johnson,4,2024-02-01,"Really enjoyed the tasting menu. Every course was a pleasant surprise. The wine list is extensive and the sommelier is very helpful.",positive,food_quality
+12,Mason Lee,5,2024-02-04,"Hands down the best burger in the city. The buns are freshly baked and the patty is seasoned perfectly. The fries are crispy and seasoned well too.",positive,food_quality
+13,Isabella Clark,5,2024-02-06,"What a gem! Hidden in a quiet street but absolutely worth seeking out. The owner greets every guest personally and the food is made with love.",positive,overall_experience
+14,Lucas Martinez,4,2024-02-09,"Very pleasant dining experience. The staff was friendly and efficient. Loved the mushroom risotto and the creme brulee was flawless.",positive,food_quality
+15,Mia Rodriguez,5,2024-02-12,"Exceeded all my expectations! The decor is stunning and the food is just as beautiful. Each dish felt like art on a plate.",positive,ambiance
+16,Benjamin Scott,4,2024-02-15,"Great spot for a business lunch. Quick service, excellent food, and a quiet enough atmosphere to have proper conversations. The seafood linguine was divine.",positive,customer_service
+17,Charlotte Green,5,2024-02-18,"We had the Sunday brunch and it was sensational. The eggs benedict were perfectly poached and the freshly squeezed juice was so refreshing.",positive,food_quality
+18,Henry Adams,5,2024-02-21,"The attention to detail here is extraordinary. From the hand-written menus to the locally sourced ingredients. This place is a true culinary experience.",positive,overall_experience
+19,Amelia Baker,4,2024-02-24,"Lovely place for a family dinner. Kids menu is thoughtful and delicious. My daughter loved the mini pizzas and I thoroughly enjoyed the lamb chops.",positive,overall_experience
+20,Elijah Nelson,5,2024-02-27,"Simply magical. The chef came out to greet us personally and explained each dish. The flavors were unlike anything I've tasted before.",positive,food_quality
+21,Abigail Carter,5,2024-03-01,"Every single time I come here, it's consistently excellent. That kind of reliability is rare. The chicken piccata never disappoints.",positive,food_quality
+22,Daniel Mitchell,4,2024-03-04,"Very good food and a great atmosphere. The live jazz on Fridays adds a special touch. The ribeye was cooked exactly to my specification.",positive,ambiance
+23,Emily Perez,5,2024-03-07,"I brought my parents here and they absolutely loved it. The service was warm, the food was delicious, and the pricing felt very fair.",positive,customer_service
+24,Michael Turner,5,2024-03-10,"One of the best dining experiences I've had this year. The degustation menu is a must-try. Every pairing was thoughtful and inspired.",positive,food_quality
+25,Hannah Phillips,4,2024-03-13,"Consistently good food and friendly staff. The seasonal menu keeps things interesting. The autumn squash soup was incredibly comforting.",positive,food_quality
+26,Alexander Campbell,5,2024-03-16,"Just incredible. The atmosphere is welcoming and the food is absolutely top tier. The slow-cooked short ribs were fall-off-the-bone tender.",positive,food_quality
+27,Victoria Evans,4,2024-03-19,"A lovely Saturday dinner. The starters were inventive and the mains were beautifully executed. Good cocktail menu too.",positive,overall_experience
+28,Elias Torres,5,2024-03-22,"Best Italian outside of Italy! The pasta is house-made and you can taste the difference. The tiramisu was the best I've ever had.",positive,food_quality
+29,Grace White,5,2024-03-25,"Incredible date night experience. The lighting, the music, the food - everything was perfectly curated. We'll be celebrating every anniversary here.",positive,ambiance
+30,Sebastian Flores,4,2024-03-28,"Highly recommend the seafood platter. Fresh, generous, and reasonably priced. Great views and a relaxed vibe. Staff is friendly and attentive.",positive,food_quality
+31,Zoey Harris,5,2024-04-01,"The chef's tasting menu was an absolute journey. Seven courses of pure brilliance. The presentation was stunning and every bite was memorable.",positive,food_quality
+32,Jack Morgan,4,2024-04-04,"Great neighborhood spot. Always reliable. The burgers are juicy and the milkshakes are thick and creamy. Perfect for a casual dinner.",positive,food_quality
+33,Lily James,5,2024-04-07,"Exquisite dining experience. The service was flawless and the food was absolutely outstanding. The sommelier's recommendations were perfect.",positive,customer_service
+34,Ryan Cooper,4,2024-04-10,"Enjoyed the farm-to-table concept. You can really taste the freshness of the ingredients. The vegetarian options are creative and satisfying.",positive,food_quality
+35,Chloe Watson,5,2024-04-13,"The brunch here is absolutely spectacular. The avocado toast was elevated to a whole new level and the bottomless mimosas were a nice touch.",positive,food_quality
+36,Tyler Brooks,5,2024-04-16,"I was blown away by the quality here. The kitchen clearly has a talented team. Every dish arrived perfectly timed and beautifully presented.",positive,food_quality
+37,Scarlett Rivera,4,2024-04-19,"A delightful experience from beginning to end. Lovely staff, gorgeous interior, and food that genuinely surprised and delighted us.",positive,overall_experience
+38,Aiden Moore,5,2024-04-22,"The best meal I've had in years. The slow-roasted duck was phenomenal. The kitchen team clearly has a deep passion for what they do.",positive,food_quality
+39,Penelope Taylor,5,2024-04-25,"What a wonderful hidden gem! The menu is creative, the portions are generous, and the prices are very reasonable. Absolutely loved it.",positive,overall_experience
+40,Caleb Anderson,4,2024-04-28,"The freshness of the ingredients really shines through every dish. Staff is warm, welcoming, and quick. Will definitely be returning soon.",positive,food_quality
+41,Derek Owens,1,2024-05-01,"Terrible experience from start to finish. Waited 45 minutes to be seated despite having a reservation. Food was cold and tasteless. Never coming back.",negative,customer_service
+42,Brianna Hughes,2,2024-05-04,"The steak I ordered was supposed to be medium-rare but arrived completely overcooked. When I complained, the waiter was dismissive and rude.",negative,food_quality
+43,Connor Ramirez,1,2024-05-07,"Found a hair in my pasta. The manager offered a discount but didn't seem genuinely concerned. The entire experience was off-putting.",negative,food_quality
+44,Samantha Price,2,2024-05-10,"Extremely disappointing. The menu looked great online but the actual dishes were nothing like the photos. Bland, small portions and overpriced.",negative,food_quality
+45,Patrick Sullivan,1,2024-05-13,"Waited over an hour for our food. No apology from the staff. When the food finally came, it was lukewarm at best. Absolutely unacceptable.",negative,customer_service
+46,Rachel Kim,2,2024-05-16,"The service was painfully slow. We had to ask three times for water. The food was mediocre at best. Not worth the price at all.",negative,customer_service
+47,Kyle Bennett,1,2024-05-19,"Shockingly bad. The fish smelled off and I ended up feeling sick afterward. The place was also dirty with sticky tables and a grimy floor.",negative,hygiene
+48,Jessica Long,2,2024-05-22,"Arrived to find our reservation had been lost. They squeezed us into a terrible corner table. The food was average and the noise level unbearable.",negative,customer_service
+49,Aaron Gray,1,2024-05-25,"The soup was stone cold and the bread was stale. When I pointed this out, the server just shrugged. Zero effort to fix the problem.",negative,food_quality
+50,Monica Cruz,2,2024-05-28,"Charged for items we never ordered and the manager refused to remove them from the bill. Felt like a scam. Will be disputing this charge.",negative,customer_service
+51,Brandon Morris,1,2024-06-01,"Worst restaurant experience of my life. Rude staff, terrible food, dirty bathrooms. I genuinely cannot find a single positive thing to say.",negative,overall_experience
+52,Stephanie Reed,2,2024-06-04,"The chicken was raw in the middle. Absolutely unacceptable and frankly dangerous. No real apology was given. I won't be returning.",negative,food_quality
+53,Gregory Cook,1,2024-06-07,"The waiter spilled a drink on my partner and barely acknowledged it. No offer to pay for dry cleaning. Just a halfhearted sorry.",negative,customer_service
+54,Tiffany Bell,2,2024-06-10,"The fresh catch of the day tasted anything but fresh. It had a strong, unpleasant smell. For the price, I expected so much better.",negative,food_quality
+55,Matthew Nguyen,1,2024-06-13,"Tables were dirty when we arrived and nobody came to clean them. The food was disappointing - overseasoned and poorly cooked.",negative,hygiene
+56,Amber Kelly,2,2024-06-16,"Every dish was way too salty. My partner's dessert had visible mold on it. The staff acted like we were bothering them by pointing it out.",negative,food_quality
+57,Joshua Hayes,1,2024-06-19,"Booked this place for a special occasion and was completely let down. Wrong orders delivered, ice cold food, and zero customer care.",negative,customer_service
+58,Lauren Barnes,2,2024-06-22,"The vegan options described on the menu contained dairy - something I'm allergic to. When flagged, the server seemed confused and unhelpful.",negative,customer_service
+59,Dustin Ross,1,2024-06-25,"Waited 20 minutes just to get a menu. Another 40 to get our food. The place was only half full. Simply no excuse for this level of service.",negative,customer_service
+60,Crystal Ward,2,2024-06-28,"The pizza base was soggy and undercooked. The toppings were sparse and the sauce was watery. For 25 dollars, I expected far better.",negative,food_quality
+61,Wayne Patterson,1,2024-07-01,"Found the kitchen visibly unclean through the open-kitchen window. Lost my appetite immediately. Health inspectors should visit this place.",negative,hygiene
+62,Heather Simmons,2,2024-07-04,"This place clearly doesn't care about its customers. Long waits, indifferent staff, and food that tastes like it came out of a microwave.",negative,overall_experience
+63,Chad Torres,1,2024-07-07,"The cocktails were watered down and overpriced. The appetizers were a joke - tiny portions served on a massive plate with garnish as filler.",negative,food_quality
+64,Vanessa Peterson,2,2024-07-10,"My dish arrived with a bug in it. I was horrified. The manager came over and offered a replacement but never apologized or discounted the bill.",negative,hygiene
+65,Kevin Cox,1,2024-07-13,"Absolutely horrendous. The pasta was overcooked and mushy, the sauce had no flavor, and the portion was embarrassingly small for the price.",negative,food_quality
+66,Diana Foster,2,2024-07-16,"Reservations here are meaningless. We waited 35 minutes past our booking time. The meal itself was forgettable and overpriced.",negative,customer_service
+67,Justin Rivera,1,2024-07-19,"The worst pizza I've ever eaten. Doughy, underseasoned, and served at room temperature. The server showed no interest in our experience at all.",negative,food_quality
+68,Shannon James,2,2024-07-22,"Absolutely nothing about this meal was enjoyable. Cold food, rude staff, noisy environment, and prices that are completely unjustified.",negative,overall_experience
+69,Randy Carter,1,2024-07-25,"Took 15 minutes just to get a glass of water. The burger was dry and the bun was stale. The fries were limp and cold. A complete waste of money.",negative,food_quality
+70,Teresa Murphy,2,2024-07-28,"Our server forgot half our order and showed zero remorse when we had to reorder. The food that did come was mediocre and arrived at different times.",negative,customer_service
+71,Carl Richardson,1,2024-08-01,"The restrooms were absolutely disgusting - no soap, overflowing bins, and broken locks. It says a lot about how this place is run overall.",negative,hygiene
+72,Nicole Griffin,2,2024-08-04,"Ordered the lamb and received what looked like a different dish entirely. Complained but was told that's just how it's plated. Unbelievable.",negative,food_quality
+73,Allen Howard,1,2024-08-07,"Possibly the rudest staff I've ever encountered. Not a single smile. Made to feel like we were inconveniencing them just by being there.",negative,customer_service
+74,Tamara Sanders,2,2024-08-10,"The crab cakes were dry and tasted store-bought. Nothing about the meal felt fresh or homemade. Extremely underwhelming for a restaurant of this price range.",negative,food_quality
+75,Randall Price,1,2024-08-13,"Three separate orders came out wrong. We waited over an hour in total. The manager offered nothing as compensation. I left genuinely upset.",negative,customer_service
+76,Cheryl Wood,2,2024-08-16,"The chicken dish had a bone fragment in it that nearly chipped my tooth. When I informed the server, she just apologized without taking it off the bill.",negative,food_quality
+77,Dennis Diaz,1,2024-08-19,"Zero stars if I could. The restaurant smelled musty when we entered. The food was bland and the service non-existent. A deeply unpleasant visit.",negative,hygiene
+78,Paula Coleman,2,2024-08-22,"Waited an hour for our mains after a fast starter. The main course was cold and over-salted. Staff seemed overwhelmed and disorganized.",negative,customer_service
+79,Shawn Butler,1,2024-08-25,"Ordered a vegetarian dish and it clearly had meat in it. A serious allergen concern that was brushed off by the manager. Completely unacceptable.",negative,food_quality
+80,Melissa Jenkins,2,2024-08-28,"Came here based on online reviews and was massively disappointed. The food was stale, the atmosphere was dull, and the service was painfully slow.",negative,overall_experience
